@@ -1,0 +1,61 @@
+from tkinter import *
+from PIL import Image, ImageTk
+import tkinter as tk
+from tkinter import messagebox
+
+prescription = Tk()
+#The size for the application(note * doesnt work for this)
+prescription.geometry("600x500")# The size of the application page
+#Name of the application
+prescription.title("My Medicine Cabnet")
+
+
+nameLabel = Label(prescription, text = "Hello! User1", font = 25) #Greets the user for loging in
+#Use (.grid) to manage the geomtry of the site
+nameLabel.grid(row = 0, column = 2) ##need to make center and get rid of
+
+nameEntry = Entry(prescription, width = 30)
+#nameEntry.grid(row = 0, column = 0)
+
+#User enters current medication
+medicationLabel = Label(prescription, text = "Click on your current medication")#Ask user to click on their medication
+medicationLabel.grid(row = 1, column = 1)
+
+medicationEntry = Entry(prescription, width = 30)
+#medicationEntry.grid(row = 1, column = 1)
+
+#A list of pill options
+currentPrescriptionsList = ["Advil", "Claritin", "Benadryl", "Nasonex", "Tylenol"]
+
+prescriptionList = Listbox(prescription, selectmode = MULTIPLE,background = "white", fg = "black")
+prescriptionList.grid(row = 3, column = 1)
+
+
+for item in currentPrescriptionsList:
+    prescriptionList.insert(0, item)
+
+
+def main():
+  pillName = input("Enter your medicine's name: ")
+  #pillCount = float(input("Enter how many pills you have: "))
+  #pillsRemain = float(input("Enter how pills you have left: "))     
+  
+
+  print("Pill Name:")         
+
+
+#get checkout
+def check():
+    text1 = nameEntry.get()
+    newLabel = Label(prescription, text = text1)
+    newLabel.grid(row = 5, column = 2)
+                     
+
+#Deletes the current prescription list
+deleteButton = Button(prescription, text = "Log Out", command = prescription.destroy)# when clicked will terminate the program
+deleteButton.grid(row = 5, column = 0)
+
+
+
+if __name__ == '__main__':
+  main()

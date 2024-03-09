@@ -1,0 +1,44 @@
+from tkinter import *
+from math import *#import math so we can calculate
+
+calc = Tk()
+calc.title('Pill Remainder')
+
+def add():
+    blank.delete(0, END)
+    Ans = int(num1.get()) + int(num2.get())
+    blank.insert(0, Ans)
+def sub():
+    blank.delete(0, END)
+    Ans = int(num1.get()) - int(num2.get())
+    blank.insert(0, Ans)
+
+def clear():
+    blank.delete(0, END)
+    num2.delete(0, END)
+    num1.delete(0, END)
+
+
+calc.geometry('750x120')
+Label(calc, text = "How many in bottle:").grid(row = 0)#ask user how many pillsin bottle
+Label(calc, text = "Used:").grid(row = 1)#the amount of pills useed
+Label(calc, text = "Your remainder: ").grid(row = 2)#The amount of pills left
+Label(calc, text = "WARNING! If under 10 remain refill prescription.", fg = "red").grid(row = 3)# A red warning to get more if result is under 10
+
+
+num1 = Entry(calc)#Information field number 1
+num2 = Entry(calc)#Information field number 2
+blank = Entry(calc)#Information field number 3
+
+
+num1.grid(row = 0, column = 1)
+num2.grid(row = 1, column = 1)
+blank.grid(row = 2, column = 1)
+
+
+Button(calc, text='Quit', command =calc.destroy).grid(row = 4, column = 0, sticky = W)#This will terminate the program
+Button(calc, text='Add', command = add).grid(row=0, column = 3, sticky = W,)# Allows user to add pills
+Button(calc, text='Subtract', command = sub).grid(row = 0, column = 4, sticky = W)#allows user to subtract pills
+Button(calc, text='Clear', command = clear).grid(row = 0, column = 9, sticky = W)#Clears out the entry
+
+mainloop()
